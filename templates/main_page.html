@@ -26,8 +26,11 @@
             </div>
         </nav>
         <div class="container">
-        <font size="+7">{{ math }}</font>
-
+        <p style="text-align:center;">
+            <font size="+7">
+                {{ math }}
+            </font>
+        </p>
             <div class="row">
                 <form action="." method="POST">
                     <textarea name="contents" placeholder="Answer:" class="form-control" id='myInput'></textarea>
@@ -36,8 +39,8 @@
             </div>
         </div>
         <script>
-            answer = math
-            if answer == "myInput"
+            //////////answer = math
+            ////////////if answer == "myInput"
         </script>
         <script> // Get the input field
             var input = document.getElementById("myInput");
@@ -52,15 +55,12 @@
                 }
             });
         </script>
-        <div id="timerContainer">
-        <div class="timer" onclick="startTimer()">Start Timer!</div>
-        <div class="startTimer reset" onclick="startTimer()" >
+        <p style="align:center;">
+            <div id="timerContainer">
+            <div class="timer" onclick="startTimer()">Start Timer!</div>
+            <div class="startTimer reset" onclick="startTimer()" >
+        </p>
             <i class="fas fa-play"></i>
-        </div>
-        <div class="pauseTimer reset" onclick="pauseTimer()" >
-            <i class="fas fa-pause"></i>
-        </div>
-        <div class="resetTimer reset" onclick="resetTimer()">Reset</div>
         </div>
         <script type="text/javascript" src="/static/stopwatch.js"></script>
     </body>
