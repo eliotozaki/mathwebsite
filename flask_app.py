@@ -43,8 +43,11 @@ def math():
 def answer():
     answer = request.form['answer']
     correctanswer = request.form['correctanswer']
-    math = getMath()
-    return jsonify(result=math)
+    if answer == correctanswer:
+        math = getMath()
+        return jsonify(result=math)
+    else:
+        return jsonify(result={"status" : "incorrect"})
 
 
 def getMath():
@@ -65,4 +68,4 @@ def getMath():
         equation="/"
         ans = num1 / num2
     math = str(str(num1) +' '+ equation +' '+ str(num2) +' =')
-    return {"answer": ans, "math": math}
+    return {"answer": ans, "math": math, "status": "correct"}
