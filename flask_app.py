@@ -60,10 +60,9 @@ def answer():
 
 @app.route("/sendTime", methods=["POST"])
 def time():
-    time = request.form['time']
-    name = request.form['name']
-    math = getMath()
-    return jsonify(result=math)
+    settime = Time(name=request.form['name'], time=request.form['time'])
+    db.session.add(settime)
+    db.session.commit()
 
 
 def getMath():
