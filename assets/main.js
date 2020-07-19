@@ -46,28 +46,28 @@ function getMath(){
                         function(data) {
                             console.log(JSON.stringify(data));
                             //if "correct".equals(data.result["status"]) {
-                            if counter<10{
+                            //if counter<10{
                                 $('#math').text(data.result['math']);
                                 $('#correctAnswer').text(data.result['answer']);
                                 counter+=1
-                            }
-                            });
+                            //}
+                        });
                             //}
                             //else {
                               //  console.log("wrong answer or smthn")
                             //}
-                    if counter>=10{
-                        stopTimer()
-                        $.post('/sendTime',
-                        // This reads the answer from an input called 'myInput' and sends it to the server
-                        { name: $('input[id="myName"]').val(),
-                        time: difference},
-                        function() {
-                            console.log("posted the time");
-                            //if "correct".equals(data.result["status"]) {
+                    // if counter>=10{
+                    //     stopTimer()
+                    //     $.post('/sendTime',
+                    //     // This reads the answer from an input called 'myInput' and sends it to the server
+                    //     { name: $('input[id="myName"]').val(),
+                    //     time: difference},
+                    //     function() {
+                    //         console.log("posted the time");
+                    //         //if "correct".equals(data.result["status"]) {
 
-                        });
-                    }
+                    //     });
+                    // }
                     return false;
 }
 
