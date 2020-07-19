@@ -3,6 +3,7 @@
 
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
+from random import randrange
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -26,6 +27,19 @@ def index():
         return render_template("main_page.html", comments=Comment.query.all())
 
     comment = Comment(content=request.form["contents"])
-    db.session.add(comment)
-    db.session.commit()
-    return redirect(url_for('index'))
+#    db.session.add(comment)
+#    db.session.commit()
+
+    num1 = randrange(1,15)
+    num2 = randrange(1,15)
+    eq = randrange(1,5)
+    if eq==1:
+        equation="+"
+    elif eq==2:
+        equation="-"
+    elif eq==3:
+        equation="*"
+    elif eq==4:
+        equation="/"
+    math = str(str(num1) +' '+ equation +' '+ str(num2) +' =')
+    return render_template("main_page.html", math=math)
