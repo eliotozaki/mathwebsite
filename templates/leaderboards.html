@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="/static/main.css">
         <title>Fast Math</title>
     </head>
 
@@ -23,21 +23,31 @@
             </div>
           </div>
         </nav>
-
+        
         <div class="container">
-
-            {% for time in times %}
-                <div class="row">
-                    {{ time.name }}
-                    {{time.time}}
-                </div>
-            {% endfor %}
-
-            <div class="row">
+        <div class="row">
                 <form action="." method="POST">
                     <input type="submit" class="btn btn-success" value="Start a set">
                 </form>
-            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for time in times %}
+                    <th scope="row">1</th>
+                    <td>{{ time.name }}</td>
+                    <td>{{time.time}}</td>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
 
         </div>
 
