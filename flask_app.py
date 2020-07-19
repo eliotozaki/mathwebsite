@@ -43,3 +43,6 @@ def index():
     math = str(str(num1) +' '+ equation +' '+ str(num2) +' =')
     return render_template("main_page.html", math=math)
 
+@app.route("/math")
+def math():
+    return render_template("math.html")
