@@ -4,8 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-        <title>My scratchboard page</title>
-        <title>Vanilla JS Stopwatch - Javascript Stopwatch</title>
+        <title>Fast Math</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         <link rel="stylesheet" href="/static/stopwatch.css">
@@ -32,36 +31,25 @@
             </font>
         </p>
             <div class="row">
-                <form action="." method="POST">
-                    <textarea name="contents" placeholder="Answer:" class="form-control" id='myInput'></textarea>
+               <form action="." method="POST">
+                    <input type=text name="contents" placeholder="Answer:" id='myInput'></input>
                     <input type="submit" class="btn btn-success" value="Submit Answer" id='myBtn'>
-                </form>
+               </form>
             </div>
         </div>
-        <script>
-            //////////answer = math
-            ////////////if answer == "myInput"
-        </script>
-        <script> // Get the input field
-            var input = document.getElementById("myInput");
-            // Execute a function when the user releases a key on the keyboard
-            input.addEventListener("keyup", function(event) {
-            // Number 13 is the "Enter" key on the keyboard
-                if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-                    event.preventDefault();
-            // Trigger the button element with a click
-                    document.getElementById("myBtn").click();
-                }
-            });
-        </script>
-        <p style="align:center;">
+        <div>
+                <p style="align:center;">
             <div id="timerContainer">
             <div class="timer" onclick="startTimer()">Start Timer!</div>
             <div class="startTimer reset" onclick="startTimer()" >
         </p>
             <i class="fas fa-play"></i>
         </div>
+        <script>
+            //////////answer = math
+            ////////////if answer == "myInput"
+        </script>
+        <script type="text/javascript" src="/static/main.js"></script>
         <script type="text/javascript" src="/static/stopwatch.js"></script>
     </body>
 </html>

@@ -25,6 +25,7 @@ class Time(db.Model):
     __tablename__ = "time"
     name = db.Column(db.String, primary_key=True)
     time = db.Column(db.Float)
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
