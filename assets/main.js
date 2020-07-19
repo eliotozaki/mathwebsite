@@ -9,6 +9,7 @@ input.addEventListener("keyup", function(event) {
         document.getElementById("myBtn").click();
     }
 });
+var counter=0
 // $(function() {
 //                 // This expects the button to be an href with id='enter-button'
 //                 $('#myBtn').bind('click', function() {
@@ -44,16 +45,31 @@ function getMath(){
                           correctanswer: $('input[id="correctAnswer"]').val()},
                         function(data) {
                             console.log(JSON.stringify(data));
-                            if "correct".equals(data.result["status"]) {
+                            //if "correct".equals(data.result["status"]) {
+                            if counter<10{
                                 $('#math').text(data.result['math']);
                                 $('#correctAnswer').text(data.result['answer']);
+                                counter+=1
                             }
+                            });
+                            //}
                             //else {
                               //  console.log("wrong answer or smthn")
                             //}
-                         });
+                    if counter>=10{
+                        stopTimer()
+                        $.post('/sendTime',
+                        // This reads the answer from an input called 'myInput' and sends it to the server
+                        { name: $('input[id="myName"]').val(),
+                        time: difference},
+                        function() {
+                            console.log("posted the time");
+                            //if "correct".equals(data.result["status"]) {
+
+                        });
+                    }
                     return false;
-                 }
+}
 
 function hide(thing){
     var x = document.getElementById(thing);

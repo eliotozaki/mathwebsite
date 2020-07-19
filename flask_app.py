@@ -52,9 +52,9 @@ def math():
 def answer():
     answer = request.form['answer']
     print('%s failed to log in', request.form, file=sys.stderr)
-    #if answer == "" or answer == request.form["correctanswer"]:
-    math = getMath()
-    return jsonify(result=math)
+    if answer == None or answer == request.form["correctanswer"]:
+        math = getMath()
+        return jsonify(result=math)
     #else:
     #    return jsonify(result={"status" : "incorrect"})
 
