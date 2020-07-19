@@ -3,6 +3,7 @@
 from flask import Flask, redirect, render_template, request, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from random import randrange
+import sys
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -50,12 +51,12 @@ def math():
 @app.route("/sendAnswer", methods=["POST"])
 def answer():
     answer = request.form['answer']
-    correctanswer = request.form['correctanswer']
-    if answer == correctanswer:
-        math = getMath()
-        return jsonify(result=math)
-    else:
-        return jsonify(result={"status" : "incorrect"})
+    print('%s failed to log in', request.form, file=sys.stderr)
+    #if answer == "" or answer == request.form["correctanswer"]:
+    math = getMath()
+    return jsonify(result=math)
+    #else:
+    #    return jsonify(result={"status" : "incorrect"})
 
 @app.route("/sendTime", methods=["POST"])
 def time():

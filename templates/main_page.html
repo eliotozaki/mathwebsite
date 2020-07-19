@@ -28,17 +28,23 @@
             <p style="text-align:center;font-size:30px" id="math">
             </p>
             <div class="row">
-                <input type=text name="contents" placeholder="Answer:" id='myInput'></input>
-                <input type="button" class="btn btn-success" value="Submit Answer" id='myBtn'>
+                <input type=text name="name" placeholder="Name:" id='myName'></input>
+                <input type="button" class="btn btn-success" value="Start" onclick = "doall()" id='myStrtBtn'>
+            </div>
+        </div>
+        <div class="container" style="text-align:center">
+            <p style="text-align:center;font-size:30px" id="math">
+            </p>
+            <div class="row">
+                <input type=text style="display:none;align:center" name="contents" placeholder="Answer:" id='myInput'></input>
+                <input type="button" style="display:none" onclick = "getMath()" class="btn btn-success" value="Submit Answer" id='myBtn'>
             </div>
         </div>
         <div>
-            <p style="align:center;">
+            <p style="text-align:center;">
                 <div id="timerContainer">
-                <div class="timer" onclick="startTimer()">Start Timer!</div>
-                <div class="startTimer reset" onclick="startTimer()" >
+                    <div class="timer" onclick="startTimer()">Timer</div>
             </p>
-            <i class="fas fa-play"></i>
         </div>
         <input type=hidden name="correctAnswer" id='correctAnswer' value="0"/>
         <script>
@@ -47,7 +53,7 @@
         </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/main.js"></script>
         <script type="text/javascript" src="/static/stopwatch.js"></script>
+        <script type="text/javascript" src="/static/main.js"></script>
     </body>
 </html>

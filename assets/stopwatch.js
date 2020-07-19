@@ -13,17 +13,13 @@ function startTimer(){
   if(!running){
     startTime = new Date().getTime();
     tInterval = setInterval(getShowTime, 1);
-// change 1 to 1000 above to run script every second instead of every millisecond. one other change will be needed in the getShowTime() function below for this to work. see comment there.   
- 
+// change 1 to 1000 above to run script every second instead of every millisecond. one other change will be needed in the getShowTime() function below for this to work. see comment there.
+
     paused = 0;
     running = 1;
 timerDisplay.style.background = "#FF0000";
     timerDisplay.style.cursor = "auto";
     timerDisplay.style.color = "yellow";
-    startTimerButton.classList.add('lighter');
-    pauseTimerButton.classList.remove('lighter');
-    startTimerButton.style.cursor = "auto";
-    pauseTimerButton.style.cursor = "pointer";
   }
 }
 function pauseTimer(){
@@ -37,10 +33,6 @@ function pauseTimer(){
     timerDisplay.style.background = "#A90000";
     timerDisplay.style.color = "#690000";
     timerDisplay.style.cursor = "pointer";
-    startTimerButton.classList.remove('lighter');
-    pauseTimerButton.classList.add('lighter');
-    startTimerButton.style.cursor = "pointer";
-    pauseTimerButton.style.cursor = "auto";
   } else {
 // if the timer was already paused, when they click pause again, start the timer again
 startTimer();
@@ -56,10 +48,6 @@ function resetTimer(){
   timerDisplay.style.background = "#A90000";
   timerDisplay.style.color = "#fff";
   timerDisplay.style.cursor = "pointer";
-  startTimerButton.classList.remove('lighter');
-  pauseTimerButton.classList.remove('lighter');
-  startTimerButton.style.cursor = "pointer";
-  pauseTimerButton.style.cursor = "auto";
 }
 function getShowTime(){
   updatedTime = new Date().getTime();
