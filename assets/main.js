@@ -13,16 +13,20 @@ $(function() {
                 // This expects the button to be an href with id='enter-button'
                 $('#myBtn').bind('click', function() {
                     // This posts the xhr to a route called /sendAnswer enabled for POST
+                    let myanswer =  $('input[id="myInput"]').val();
+                    $('#myInput').text("");
                     $.post('/sendAnswer',
                         // This reads the answer from an input called 'myInput' and sends it to the server
-                        { answer: $('input[id="myInput"]').val(),
+                        { answer:myanswer,
                           correctanswer: $('input[id="correctAnswer"]').val()},
                         function(data) {
                              console.log(JSON.stringify(data));
                             console.log(data.result['math'] + ' is math');
                             console.log(data.result['answer']);
-                            $('#math').text(data.result['math']);
-                            $('#correctAnswer').text(data.result['answer']);
+                            if data.result["status"] = "correct" {
+                                $('#math').text(data.result['math']);
+                                $('#correctAnswer').text(data.result['answer']);
+                            }
                          });
                     return false;
                  });
