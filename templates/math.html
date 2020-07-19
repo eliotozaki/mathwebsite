@@ -2,13 +2,23 @@
     <head>
         <meta charset="utf-8">
         <style>
-            canvas { border: 1px solid black; position: absolute; top: 100px; left: 100px;}
-
+            #myDiv1 { border: 1px solid black; position: absolute; top: 500px; left: 600px;}
+            #myDiv2 { border: 1px solid black; position: absolute; top: 250px; left: 500px;}
+            #myDiv3 { border: 1px solid black; position: absolute; top: 521px; left: 600px;}
+            #myDiv4 { border: 1px solid black; position: absolute; top: 200px; left: 1200px;}
         </style>
         <title>math</title>
     </head>
     <body>
-        <canvas width="200" height="200" id="myCanvas"></canvas>
+        <div id="myDiv2"></div>
+        <div id="myDiv1">
+             <label for="lfname">Answer:</label>
+             <input id="lfname" name="fname" type="text" />
+        </div>
+        <div id="myDiv3">
+            <label>hit Enter to sumbit your answer</label>
+        </div>
+        <div id="myDiv4"></div>
     <script>var canvas = document.getElementById("myCanvas")</script>
 
     </body>
