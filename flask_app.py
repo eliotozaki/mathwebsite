@@ -32,12 +32,16 @@ def index():
 
 #   comment = Comment(content=request.form["contents"])
 
+@app.route("/leaderboards", methods = ["GET", "POST"])
+def leaderboards():
+    if request.method == "GET":
+        return render_template("leaderboards.html", times=Time.query.all())
 
-
+    return redirect(url_for('math'))
 
 @app.route("/math")
 def math():
-    return render_template("math.html")
+    return render_template("main_page.html")
 
 @app.route("/sendAnswer", methods=["POST"])
 def answer():
