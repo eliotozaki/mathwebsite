@@ -20,14 +20,19 @@ class Comment(db.Model):
     __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(4096))
+
+class Time(db.Model):
+    __tablename__ = "time"
+    name = db.Column(db.String, primary_key=True)
+    time = db.Column(db.Float)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
         return render_template("main_page.html", comments=Comment.query.all())
 
     comment = Comment(content=request.form["contents"])
-#    db.session.add(comment)
-#    db.session.commit()
+
+
 
     num1 = randrange(1,15)
     num2 = randrange(1,15)
