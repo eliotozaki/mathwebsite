@@ -16,6 +16,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+
 class Comment(db.Model):
     __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
@@ -23,21 +24,28 @@ class Comment(db.Model):
 
 class Time(db.Model):
     __tablename__ = "time"
-    name = db.Column(db.String, primary_key=True)
+    name = db.Column(db.String(100), primary_key=True)
     time = db.Column(db.Float)
 
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 def index():
-    return render_template("main_page.html", comments=Comment.query.all())
+    if request.method == "GET":
+        return render_template("leaderboards.html", times=Time.query.all())
+
+    return redirect(url_for('math'))
 
 #   comment = Comment(content=request.form["contents"])
 
+@app.route("/leaderboards", methods = ["GET", "POST"])
+def leaderboards():
+    if request.method == "GET":
+        return render_template("leaderboards.html", times=Time.query.all())
 
-
+    return redirect(url_for('math'))
 
 @app.route("/math")
 def math():
-    return render_template("math.html")
+    return render_template("main_page.html")
 
 @app.route("/sendAnswer", methods=["POST"])
 def answer():
@@ -48,6 +56,13 @@ def answer():
         return jsonify(result=math)
     else:
         return jsonify(result={"status" : "incorrect"})
+
+@app.route("/sendTime", methods=["POST"])
+def time():
+    time = request.form['time']
+    name = request.form['name']
+    math = getMath()
+    return jsonify(result=math)
 
 
 def getMath():
