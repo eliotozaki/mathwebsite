@@ -1,6 +1,6 @@
 
 # A very simple Flask Hello World app for you to get started with...
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from random import randrange
 
@@ -26,29 +26,43 @@ class Time(db.Model):
     name = db.Column(db.String, primary_key=True)
     time = db.Column(db.Float)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-    if request.method == "GET":
-        return render_template("main_page.html", comments=Comment.query.all())
+    return render_template("main_page.html", comments=Comment.query.all())
 
-    comment = Comment(content=request.form["contents"])
-
+#   comment = Comment(content=request.form["contents"])
 
 
-    num1 = randrange(1,15)
-    num2 = randrange(1,15)
-    eq = randrange(1,5)
-    if eq==1:
-        equation="+"
-    elif eq==2:
-        equation="-"
-    elif eq==3:
-        equation="*"
-    elif eq==4:
-        equation="/"
-    math = str(str(num1) +' '+ equation +' '+ str(num2) +' =')
-    return render_template("main_page.html", math=math)
+
 
 @app.route("/math")
 def math():
     return render_template("math.html")
+
+@app.route("/sendAnswer", methods=["POST"])
+def answer():
+    answer = request.form['answer']
+    correctanswer = request.form['correctanswer']
+    math = getMath()
+    return jsonify(result=math)
+
+
+def getMath():
+    num1 = randrange(1,15)
+    num2 = randrange(1,15)
+    eq = randrange(1,5)
+    ans = 0
+    if eq==1:
+        equation="+"
+        ans = num1 + num2
+    elif eq==2:
+        equation="-"
+        ans = num1 - num2
+    elif eq==3:
+        equation="*"
+        ans = num1 * num2
+    elif eq==4:
+        equation="/"
+        ans = num1 / num2
+    math = str(str(num1) +' '+ equation +' '+ str(num2) +' =')
+    return {"answer": ans, "math": math}

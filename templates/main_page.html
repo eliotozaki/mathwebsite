@@ -20,35 +20,33 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">My scratchpad</a>
+                    <a class="navbar-brand" href="#">Fast Math</a>
                 </div>
             </div>
         </nav>
         <div class="container">
-        <p style="text-align:center;">
-            <font size="+7">
-                {{ math }}
-            </font>
-        </p>
+            <p style="text-align:center;font-size:30px" id="math">
+            </p>
             <div class="row">
-               <form action="." method="POST">
-                    <input type=text name="contents" placeholder="Answer:" id='myInput'></input>
-                    <input type="submit" class="btn btn-success" value="Submit Answer" id='myBtn'>
-               </form>
+                <input type=text name="contents" placeholder="Answer:" id='myInput'></input>
+                <input type="button" class="btn btn-success" value="Submit Answer" id='myBtn'>
             </div>
         </div>
         <div>
-                <p style="align:center;">
-            <div id="timerContainer">
-            <div class="timer" onclick="startTimer()">Start Timer!</div>
-            <div class="startTimer reset" onclick="startTimer()" >
-        </p>
+            <p style="align:center;">
+                <div id="timerContainer">
+                <div class="timer" onclick="startTimer()">Start Timer!</div>
+                <div class="startTimer reset" onclick="startTimer()" >
+            </p>
             <i class="fas fa-play"></i>
         </div>
+        <input type=hidden name="correctAnswer" id='correctAnswer' value="0"/>
         <script>
             //////////answer = math
             ////////////if answer == "myInput"
         </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="/static/main.js"></script>
         <script type="text/javascript" src="/static/stopwatch.js"></script>
     </body>
